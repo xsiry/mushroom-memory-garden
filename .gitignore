@@ -1,0 +1,15 @@
+# 本机构建、回归截图和发布归档由脚本生成，不进入源码仓库。
+/dist/
+/outputs/
+/.spec-workflow/
+node_modules/
+coverage/
+.DS_Store
+*.log
+
+# 本机环境配置及凭据。
+.env
+.env.*
+!.env.example
+*.pem
+*.key

@@ -1,0 +1,10 @@
+import { mkdir, cp, readFile, writeFile, readdir } from 'node:fs/promises';
+import { join } from 'node:path';
+await mkdir('dist', { recursive: true });
+for (const file of ['index.html', 'styles.css', 'src']) await cp(file, join('dist', file), { recursive: true });
+await mkdir('dist/assets/mushrooms', { recursive: true });
+await cp('assets/sprout.svg', 'dist/assets/sprout.svg');
+for (const file of await readdir('assets/mushrooms')) if (file.endsWith('.webp')) await cp(join('assets/mushrooms', file), join('dist/assets/mushrooms', file));
+const manifest = { version: JSON.parse(await readFile('package.json', 'utf8')).version, builtAt: new Date().toISOString(), entry: 'index.html' };
+await writeFile('dist/build-info.json', JSON.stringify(manifest, null, 2));
+console.log('静态游戏构建完成：dist/，无需运行时依赖。');

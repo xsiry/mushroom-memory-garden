@@ -1,0 +1,20 @@
+const paths = {
+  sound: '<path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/>',
+  mute: '<path d="M11 5 6 9H3v6h3l5 4zM16 9l5 6m0-6-5 6"/>',
+  help: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 4 2c-1 .6-1.5 1-1.5 2m0 3h.01"/>',
+  arrow: '<path d="M5 12h14m-6-6 6 6-6 6"/>',
+  back: '<path d="m14 6-6 6 6 6"/>',
+  close: '<path d="m6 6 12 12M6 18 18 6"/>',
+  leaf: '<path d="M20 4C7 2 3 7 5 14s15 6 15-10ZM5 20 16 9"/>',
+  gift: '<path d="M4 10h16v11H4zM3 6h18v4H3zM12 6v15"/><path d="M12 6C2 7 5-4 12 6c7-10 10 1 0 0Z"/>',
+  book: '<path d="M12 5C8 2 3 4 3 4v15s5-2 9 1c4-3 9-1 9-1V4s-5-2-9 1Zm0 0v15"/>',
+  qr: '<path d="M3 3h6v6H3zm12 0h6v6h-6zM3 15h6v6H3zm12 0h2v2h-2zm4 4h2v2h-2zM13 3v8h8M3 12h8v9m3-2h3v2m3-9v3h-3v4"/>',
+  undo: '<path d="M4 10h10a6 6 0 0 1 0 12M4 10l5-5m-5 5 5 5"/>',
+  check: '<path d="m5 12 4 4L19 6"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  chevron: '<path d="m6 9 6 6 6-6"/>',
+  asterisk: '<path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/>',
+  floret: '<path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9"/><circle cx="12" cy="12" r="2.2" fill="currentColor"/>',
+  sparkle: '<path d="M12 3c.5 4.8 4.2 8.5 9 9-4.8.5-8.5 4.2-9 9-.5-4.8-4.2-8.5-9-9 4.8-.5 8.5-4.2 9-9Z" fill="currentColor"/>',
+};
+export function icon(name) { return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name] ?? paths.leaf}</svg>`; }

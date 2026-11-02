@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fbf7ed">
+  <meta name="description" content="和七位可爱的蘑菇伙伴玩一局记忆排序，找回森林里的小小顺序，通关后到现场领取小礼物。">
+  <title>蘑菇家族 · 记忆排序</title>
+  <link rel="icon" href="assets/sprout.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/mushrooms/matsutake.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/mushrooms/pink-ear.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/mushrooms/lions-mane.webp" as="image" type="image/webp">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="src/app.js"></script>
+</head>
+<body>
+  <div class="forest-background" aria-hidden="true">
+    <span class="spore s1"></span><span class="spore s2"></span><span class="spore s3"></span>
+    <span class="spore s4"></span><span class="spore s5"></span><span class="spore s6"></span>
+  </div>
+  <div id="fx-layer" class="fx-layer" aria-hidden="true"></div>
+  <div id="app"><main class="boot"><img src="assets/mushrooms/matsutake.webp" width="112" height="140" fetchpriority="high" alt="赤松茸伙伴"><h1>蘑菇家族</h1><p role="status">正在打开森林小径…</p></main></div>
+  <dialog id="sheet" aria-labelledby="sheet-title"></dialog>
+  <div id="announcement" class="sr-only" role="status" aria-live="polite"></div>
+  <noscript>请启用浏览器 JavaScript，和蘑菇伙伴一起玩记忆排序。</noscript>
+</body>
+</html>
