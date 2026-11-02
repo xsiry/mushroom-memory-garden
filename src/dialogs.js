@@ -60,7 +60,39 @@ export function confirmLeave(onConfirm) {
   sheet.querySelector('[data-leave]').addEventListener('click', () => { closeSheet(); onConfirm(); });
 }
 export function verify(reward, onRedeem) {
-  showSheet('工作人员现场核验', `<div class="staff-note">请将手机交给工作人员操作</div><p>请核对游客本机实时凭证、今日日期及下方编号，并完成礼品发放。</p><p class="verify-code">${reward.code.slice(0, 5)} ${reward.code.slice(5)}</p><label class="confirm-checkbox"><input type="checkbox" id="gift-delivered">我已核对凭证，并已向游客发放小礼品</label><button class="primary" data-redeem disabled>确认已发放，完成核销</button><p class="fine-print">确认后，本机今日凭证将标记为已领取。</p>`);
-  sheet.querySelector('#gift-delivered').addEventListener('change', event => { sheet.querySelector('[data-redeem]').disabled = !event.target.checked; });
+  const codePart1 = reward.code.slice(0, 5);
+  const codePart2 = reward.code.slice(5);
+  const dayFormatted = reward.day ? reward.day.replaceAll('-', '.') : '';
+  showSheet('工作人员现场核验', `<div class="verify-wrap">
+    <div class="staff-note">
+      <span class="staff-badge">工作人员操作</span>
+      <span>请将手机交给现场工作人员，核对凭证后发放礼品</span>
+    </div>
+    <div class="verify-card">
+      <div class="verify-card-header">
+        <span class="verify-card-title">${icon('gift')} 现场通关礼遇凭证</span>
+        <span class="verify-card-day">有效日期 ${dayFormatted}</span>
+      </div>
+      <div class="verify-code-wrap">
+        <span class="verify-code-label">凭证核销码</span>
+        <p class="verify-code">${codePart1} <span>·</span> ${codePart2}</p>
+      </div>
+      <p class="verify-hint">请核对游客手机端凭证编号与有效日期一致</p>
+    </div>
+    <label class="confirm-checkbox" for="gift-delivered">
+      <input type="checkbox" id="gift-delivered">
+      <span class="confirm-box" aria-hidden="true">${icon('check')}</span>
+      <span class="confirm-desc">
+        <strong>我已核对凭证，并已向游客发放小礼品</strong>
+        <small>确认礼品已交付游客，完成今日核销</small>
+      </span>
+    </label>
+    <button class="primary" data-redeem disabled>${icon('check')} 确认已发放，完成核销</button>
+    <p class="fine-print">${icon('leaf')} 确认后，本机今日凭证将标记为已领取，不可撤回。</p>
+  </div>`);
+  sheet.querySelector('#gift-delivered').addEventListener('change', event => {
+    const btn = sheet.querySelector('[data-redeem]');
+    if (btn) btn.disabled = !event.target.checked;
+  });
   sheet.querySelector('[data-redeem]').addEventListener('click', () => { closeSheet(); onRedeem(); }, { once: true });
 }
